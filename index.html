@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monday-Morning Prompt</title>
-  <meta name="description" content="A meeting preparation prompt for financial advisors. Works with any CRM or AI assistant.">
+  <meta name="description" content="A meeting preparation prompt that works with any CRM or AI assistant.">
 
   <style>
     /* ============================================================
@@ -17,17 +17,20 @@
     }
 
     :root {
-      --navy:   #1A2B45;
-      --cream:  #F7F5F0;
-      --gold:   #B8965A;
-      --gold-light: #D4AF72;
-      --text:   #2C3340;
-      --muted:  #6B7280;
-      --border: #D8D2C5;
-      --card-bg: #FFFFFF;
-      --prompt-bg: #F2EFE9;
-      --radius: 10px;
-      --shadow: 0 2px 16px rgba(26, 43, 69, 0.10);
+      /* Pacific Capital brand colors */
+      --navy:      #1A3A5C;
+      --navy-dark: #122840;
+      --navy-mid:  #234d73;
+      --red:       #C0504D;
+      --red-light: #d4706e;
+      --cream:     #F7F5F0;
+      --text:      #2C3340;
+      --muted:     #6B7280;
+      --border:    #D8D2C5;
+      --card-bg:   #FFFFFF;
+      --prompt-bg: #EBF3FB; /* Pacific Capital light blue */
+      --radius:    10px;
+      --shadow:    0 2px 18px rgba(26, 58, 92, 0.11);
     }
 
     html {
@@ -68,16 +71,6 @@
     /* ============================================================
        HEADER
     ============================================================ */
-    .eyebrow {
-      display: block;
-      font-size: 0.70rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-
     h1 {
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: clamp(1.6rem, 5vw, 2.1rem);
@@ -100,8 +93,8 @@
     ============================================================ */
     .prompt-card {
       background: var(--prompt-bg);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--gold);
+      border: 1px solid #c5d9ec;
+      border-left: 4px solid var(--navy);
       border-radius: var(--radius);
       padding: 24px 22px;
       margin-bottom: 10px;
@@ -115,12 +108,12 @@
       -webkit-user-select: text;
     }
 
-    /* Subtle "quoted" quotation mark decoration */
+    /* Subtle quotation mark decoration in Pacific Capital red */
     .prompt-card::before {
       content: "\201C";
       display: block;
       font-size: 2.4rem;
-      color: var(--gold);
+      color: var(--red);
       line-height: 1;
       margin-bottom: 6px;
       font-family: Georgia, serif;
@@ -169,46 +162,25 @@
       text-decoration: none;
     }
 
-    /* Primary: Copy */
+    /* Primary: Copy — Pacific Capital navy */
     .btn-primary {
       background: var(--navy);
       color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(26, 43, 69, 0.20);
+      box-shadow: 0 2px 8px rgba(26, 58, 92, 0.22);
     }
 
     .btn-primary:hover {
-      background: #253652;
-      box-shadow: 0 4px 12px rgba(26, 43, 69, 0.28);
+      background: var(--navy-mid);
+      box-shadow: 0 4px 12px rgba(26, 58, 92, 0.30);
     }
 
     .btn-primary:active {
       transform: scale(0.97);
-      background: #141f32;
+      background: var(--navy-dark);
     }
 
     .btn-primary:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    /* Secondary: Download */
-    .btn-secondary {
-      background: transparent;
-      color: var(--navy);
-      border: 1.5px solid var(--navy);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(26, 43, 69, 0.06);
-    }
-
-    .btn-secondary:active {
-      transform: scale(0.97);
-      background: rgba(26, 43, 69, 0.12);
-    }
-
-    .btn-secondary:focus-visible {
-      outline: 2px solid var(--gold);
+      outline: 2px solid var(--red);
       outline-offset: 3px;
     }
 
@@ -218,14 +190,14 @@
     .feedback {
       display: none;
       font-size: 0.80rem;
-      color: var(--gold);
+      color: var(--red);
       margin-top: 14px;
       text-align: center;
       font-weight: 500;
     }
 
     /* ============================================================
-       DIVIDER ABOVE BUTTONS
+       DIVIDER ABOVE BUTTON
     ============================================================ */
     .divider {
       border: none;
@@ -234,21 +206,16 @@
     }
 
     /* ============================================================
-       RESPONSIVE — Stack buttons below ~480px (iPhone SE width = 375px)
+       RESPONSIVE — Full-width button below ~480px (iPhone SE = 375px)
     ============================================================ */
     @media (max-width: 479px) {
       .card {
         padding: 36px 22px 32px;
       }
 
-      .button-row {
-        flex-direction: column;
-        gap: 10px;
-      }
-
       .btn {
         width: 100%;
-        min-height: 48px; /* slightly taller on small screens for easier tapping */
+        min-height: 48px;
       }
     }
   </style>
@@ -257,14 +224,13 @@
 
   <main class="card" role="main">
 
-    <span class="eyebrow">For Financial Advisors</span>
     <h1>Your Monday-Morning Prompt</h1>
     <p class="subhead">A meeting preparation prompt that works with any CRM or client notes.</p>
 
     <!--
-      The prompt card — this exact text is copied/downloaded.
-      It uses a monospace-adjacent font and a distinct background
-      so users immediately recognize it as "the thing to paste."
+      The prompt card — this exact text is copied by the button.
+      Monospace-adjacent font and distinct background signal
+      "this is the thing to paste."
     -->
     <div class="prompt-card" id="promptCard" aria-label="Prompt text">Review the following client information and prepare a meeting brief that includes: key relationship details, recent life events, portfolio changes since last meeting, planning gaps to discuss, and three conversation starters that show you truly know this client.</div>
 
@@ -274,24 +240,13 @@
 
     <div class="button-row" role="group" aria-label="Prompt actions">
       <button class="btn btn-primary" id="copyBtn" onclick="copyPrompt()">
-        <!-- Clipboard icon (inline SVG, no external resource) -->
+        <!-- Clipboard icon (inline SVG — no external resource) -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
         <span id="copyLabel">Copy Prompt</span>
-      </button>
-
-      <button class="btn btn-secondary" id="downloadBtn" onclick="downloadPrompt()">
-        <!-- Download icon (inline SVG) -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>Download as Note</span>
       </button>
     </div>
 
@@ -301,8 +256,7 @@
 
   <script>
     // =============================================================
-    // PROMPT TEXT
-    // The single source of truth — copy and download both use this.
+    // PROMPT TEXT — single source of truth for the copy action
     // =============================================================
     var PROMPT_TEXT =
       "Review the following client information and prepare a meeting brief that " +
@@ -311,35 +265,22 @@
       "starters that show you truly know this client.";
 
     // =============================================================
-    // PLATFORM DETECTION
-    // Used to branch between iOS and Android/desktop behaviours for
-    // clipboard and download. We detect iOS via the user agent string
-    // and navigator.platform (for iPads on newer iOS).
-    // navigator.standalone is also checked to cover home-screen PWAs.
-    // =============================================================
-    var isIOS = /iP(hone|od|ad)/i.test(navigator.userAgent) ||
-                (/MacIntel/.test(navigator.platform) && navigator.maxTouchPoints > 1);
-
-    // =============================================================
     // COPY PROMPT
+    // IMPORTANT: iOS Safari requires the Clipboard API to be called
+    // *synchronously* within a user-gesture handler. Any await or
+    // async gap before writeText() causes iOS to silently refuse the
+    // permission. This function stays fully synchronous.
     // =============================================================
     function copyPrompt() {
-      // IMPORTANT — iOS Safari requires the Clipboard API to be called
-      // *synchronously* within a user-gesture handler. Any await or
-      // async gap before writeText() causes iOS to silently refuse the
-      // permission. This function is therefore kept fully synchronous.
-
-      var label = document.getElementById("copyLabel");
+      var label    = document.getElementById("copyLabel");
       var feedback = document.getElementById("feedback");
 
       // ---- Modern async Clipboard API (iOS 13.1+, Android Chrome) ----
       if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-        // Call immediately — no awaiting anything before this point.
         navigator.clipboard.writeText(PROMPT_TEXT).then(function () {
           showCopied(label, feedback);
         }).catch(function () {
-          // Clipboard API rejected (e.g. no permission, insecure context).
-          // Fall through to execCommand fallback.
+          // Clipboard API rejected — fall through to execCommand fallback.
           execCommandFallback(label, feedback);
         });
         return;
@@ -350,34 +291,27 @@
     }
 
     function execCommandFallback(label, feedback) {
-      // Create an off-screen <textarea>, select its content, copy, then remove.
+      // Create an off-screen <textarea>, select its text, copy, then remove.
       var ta = document.createElement("textarea");
       ta.value = PROMPT_TEXT;
-
-      // Position off-screen so it's not visible, but keep it in the DOM
-      // long enough for execCommand to work. Position fixed avoids scroll jump.
+      // Fixed position keeps it off-screen without triggering a scroll jump.
       ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none;";
       document.body.appendChild(ta);
 
-      // On iOS, simply calling select() won't work for <textarea>. We must
-      // also set a range on the element using setSelectionRange.
+      // On iOS, select() alone doesn't work — setSelectionRange is required.
       ta.focus();
       ta.setSelectionRange(0, ta.value.length);
 
       var success = false;
-      try {
-        success = document.execCommand("copy");
-      } catch (e) {
-        success = false;
-      }
+      try { success = document.execCommand("copy"); } catch (e) {}
 
       document.body.removeChild(ta);
 
       if (success) {
         showCopied(label, feedback);
       } else {
-        // Last resort — visually highlight the prompt card so the user
-        // can long-press and copy manually.
+        // Last resort — visually select the prompt card so the user can
+        // long-press and copy manually.
         highlightPromptForManualCopy(feedback);
       }
     }
@@ -385,92 +319,20 @@
     function showCopied(label, feedback) {
       label.textContent = "Copied!";
       feedback.style.display = "none";
-      setTimeout(function () {
-        label.textContent = "Copy Prompt";
-      }, 1500);
+      setTimeout(function () { label.textContent = "Copy Prompt"; }, 1500);
     }
 
     function highlightPromptForManualCopy(feedback) {
-      // Select the prompt card's text so the user can see it highlighted.
-      var card = document.getElementById("promptCard");
+      var card      = document.getElementById("promptCard");
       var selection = window.getSelection();
-      var range = document.createRange();
+      var range     = document.createRange();
       range.selectNodeContents(card);
       selection.removeAllRanges();
       selection.addRange(range);
 
       feedback.textContent = "Select and copy manually";
       feedback.style.display = "block";
-      setTimeout(function () {
-        feedback.style.display = "none";
-      }, 3500);
-    }
-
-    // =============================================================
-    // DOWNLOAD AS NOTE
-    // =============================================================
-    function downloadPrompt() {
-      var filename = "monday-morning-prompt.txt";
-      var feedback = document.getElementById("feedback");
-
-      // ---- iOS Safari branch ----
-      // Blob + <a download> is unreliable on iOS Safari — the browser
-      // frequently ignores the download attribute and opens the file
-      // inline, with no option to save it natively from that view.
-      //
-      // The most reliable iOS approach is a data: URI opened in a new
-      // tab. iOS Safari renders plain text in a new tab and offers the
-      // Share sheet (including "Save to Files"), which is the native
-      // iOS save workflow. This is more actionable than a "tap and hold"
-      // instruction, which many users miss.
-      if (isIOS) {
-        // Encode the prompt as a data URI and open in a new tab.
-        // iOS will show a Share icon (top-right) allowing "Save to Files"
-        // or copy from the rendered page.
-        var dataURI = "data:text/plain;charset=utf-8," + encodeURIComponent(PROMPT_TEXT);
-        var newTab = window.open(dataURI, "_blank");
-
-        if (!newTab) {
-          // Popup was blocked (rare on iOS, but possible with some content blockers).
-          // Fall back to manual copy.
-          highlightPromptForManualCopy(feedback);
-          return;
-        }
-
-        // Show a brief instruction so the user knows to tap Share > Save to Files.
-        feedback.textContent = "Tap the Share icon in Safari, then \u2018Save to Files\u2019";
-        feedback.style.display = "block";
-        setTimeout(function () {
-          feedback.style.display = "none";
-        }, 5000);
-        return;
-      }
-
-      // ---- Android Chrome & desktop ----
-      // Standard Blob + <a download> works correctly here.
-      if (typeof Blob !== "undefined" && typeof URL !== "undefined" && URL.createObjectURL) {
-        var blob = new Blob([PROMPT_TEXT], { type: "text/plain;charset=utf-8" });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-
-        // Append to body, click, then remove — required in some browsers.
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
-
-        // Revoke object URL after a short delay to free memory.
-        setTimeout(function () {
-          URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-        }, 500);
-        return;
-      }
-
-      // ---- Last resort (very old browsers) ----
-      // Nothing worked — highlight the prompt so the user can copy manually.
-      highlightPromptForManualCopy(feedback);
+      setTimeout(function () { feedback.style.display = "none"; }, 3500);
     }
   </script>
 
